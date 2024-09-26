@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Sharing Decoder</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .file-input-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        #fileInput {
+            display: none;
+        }
+        .file-input-label {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .file-input-label:hover {
+            background-color: #2980b9;
+        }
+        #decodeButton {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        #decodeButton:hover {
+            background-color: #27ae60;
+        }
+        #output {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #ecf0f1;
+            min-height: 50px;
+            text-align: center; /* Center the text */
+            font-weight: bold; /* Make the text bold */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .file-name {
+            margin-top: 10px;
+            text-align: center;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Catalog Question 1</h1>
+        <div class="file-input-container">
+            <label for="fileInput" class="file-input-label">Choose JSON File</label>
+            <input type="file" id="fileInput" accept=".json" />
+        </div>
+        <div class="file-name" id="fileName"></div>
+        <button id="decodeButton">Decode</button>
+        <div id="output"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/big-integer/1.6.51/BigInteger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fraction.js/4.0.2/fraction.min.js"></script>
+    <script src="https://unpkg.com/fraction.js@4.0.2/fraction.min.js"></script>
+    
+    <script>
+        // Debugging check for Fraction
+        if (typeof Fraction === 'undefined') {
+            console.error('Fraction is not loaded. Check the CDN link.');
+        } else {
+            console.log('Fraction loaded successfully.');
+        }
+
+        // Display selected file name
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            var fileName = e.target.files[0] ? e.target.files[0].name : 'No file chosen';
+            document.getElementById('fileName').textContent = fileName;
+        });
+    </script>
+    
+    <script src="secret_sharing.js"></script>
+</body>
+</html>
