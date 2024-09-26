@@ -28,7 +28,7 @@ function lagrangeInterpolation(points, k) {
     return c;
 }
 
-function processFile(filename) {
+function helper(filename) {
     try {
         const data = fs.readFileSync(filename, 'utf8');
         const jsonObject = JSON.parse(data);
@@ -85,7 +85,7 @@ function main() {
     const filenames = ['input1.json', 'input2.json'];
 
     filenames.forEach(filename => {
-        processFile(filename);
+        helper(filename);
     });
 }
 
